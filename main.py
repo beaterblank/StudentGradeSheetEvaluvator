@@ -35,4 +35,4 @@ if uploaded_file is not None:
     col2.metric("USA CGPA",round(data['4 scale weights'].astype(float).sum()/data["Final Credits"].astype(float).sum(),2))
 st.write("Grade Scale : ")
 st.write(header(gradeScale.transpose()))
-
+st.write("source https://www.scholaro.com/gpa-calculator/ select India , All , Vellore Instituite of Technology")
