@@ -24,7 +24,7 @@ if uploaded_file is not None:
         nd.append(header(df))
     data = pd.concat(nd,ignore_index=True).drop(columns=['Sl.No'])
     if(agree):
-        idx = data[(data["Grade"]=="F") | (data["Grade"].str.startswith("N")) | data["Grade"]=="Y" | data["Grade"]=="W"].index
+        idx = data[(data["Grade"]=="F") | (data["Grade"].str.startswith("N")) | (data["Grade"]=="Y") | (data["Grade"]=="W")].index
         data.drop(idx , inplace=True)
         data.reset_index(inplace=True)
     data["10 Scale"] = data["Grade"].replace(grade_to_gpa)
