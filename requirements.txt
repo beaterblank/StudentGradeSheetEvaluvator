@@ -1,1 +1,1 @@
-tabula
+tabula-py
