@@ -9,7 +9,7 @@ header = lambda df:df.rename(columns=df.iloc[0]).drop(df.index[0]).reset_index(d
 
 st.title("VIT grade sheet to US 4 point scale converter")
 st.write("will convert grade sheet provided on VTOP")
-st.write("make sure u passed all courses")
+st.write("*drops all failed courses*")
 st.write("Only covers course options 'NIL' and other courses are ignored")
 gradeScale = pd.read_csv("grade.csv")
 grade_to_gpa = dict(gradeScale[['Grade','Scale']].values)
@@ -23,6 +23,9 @@ if uploaded_file is not None:
     for df in dfs:
         nd.append(header(df))
     data = pd.concat(nd,ignore_index=True).drop(columns=['Sl.No'])
+    idx = data[(data["Grade"]=="F") | (data["Grade"].str.startswith("N"))].index
+    data.drop(idx , inplace=True)
+    data.reset_index(inplace=True)
     data["10 Scale"] = data["Grade"].replace(grade_to_gpa)
     data["4 Scale"] = data["Grade"].replace(grade_to_us)
     data["Final Credits"] = np.where(data['Course\rOption'] == 'NIL',data['Credits'],0)
