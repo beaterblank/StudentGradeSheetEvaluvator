@@ -9,6 +9,7 @@ header = lambda df:df.rename(columns=df.iloc[0]).drop(df.index[0]).reset_index(d
 
 st.title("VIT grade sheet to US 4 point scale converter")
 st.write("will convert grade sheet provided on VTOP")
+st.write("make sure u passed all courses")
 st.write("Only covers course options 'NIL' and other courses are ignored")
 gradeScale = pd.read_csv("grade.csv")
 grade_to_gpa = dict(gradeScale[['Grade','Scale']].values)
