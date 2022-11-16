@@ -1,6 +1,5 @@
 import streamlit as st
 from tabula import read_pdf
-from tabulate import tabulate
 import pandas as pd
 import numpy as np
 #reads table from pdf file
