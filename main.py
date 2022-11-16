@@ -8,7 +8,8 @@ import numpy as np
 header = lambda df:df.rename(columns=df.iloc[0]).drop(df.index[0]).reset_index(drop=True)
 
 st.title("VIT grade sheet to US 4 point scale converter")
-st.write("Only covers course options 'NIL'")
+st.write("will convert grade sheet provided on VTOP")
+st.write("Only covers course options 'NIL' and other courses are ignored")
 gradeScale = pd.read_csv("grade.csv")
 grade_to_gpa = dict(gradeScale[['Grade','Scale']].values)
 grade_to_us = dict(gradeScale[['Grade','US Grade Points']].values)
