@@ -23,6 +23,7 @@ if uploaded_file is not None:
     for df in dfs:
         nd.append(header(df))
     data = pd.concat(nd,ignore_index=True).drop(columns=['Sl.No'])
+    data = data[data["Grade"].notna()]
     if(agree):
         idx = data[(data["Grade"]=="F") | (data["Grade"].str.startswith("N")) | (data["Grade"]=="Y") | (data["Grade"]=="W")].index
         data.drop(idx , inplace=True)
